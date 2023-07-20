@@ -1,6 +1,10 @@
 package chapter3;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -74,6 +78,66 @@ public class DateTimeClass {
 		// a : 오전/오후 , E : 요일
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println(simpleDateFormat.format(new Date()));
+		
+		// 4. LocalDateTime 클래스
+		// JDK 8 이후에 나온 날짜 및 시간 관련 API 클래스
+		// Date 클래스나 Calendar 클래스보다 직관적인 표현 및 연산이 가능
+		
+		// LocalTime 클래스 - 시간 관리 클래스
+		// LocalDate 클래스 - 날짜 관리 클래스 
+		// LocalDatetime 클래스 - 날짜 및 시간 관리 클래스
+		
+		// now() : 현재시간 기준으로 인스턴스 생성
+		LocalTime localTime1 = LocalTime.now();
+		// of() : 특정 시간을 지정해서 인스턴스 생성
+		LocalTime localTime2 = LocalTime.of(9, 33, 20);
+		
+		System.out.println(localTime1);
+		System.out.println(localTime2);
+		
+		LocalDate localDate1 = LocalDate.now();
+		LocalDate localDate2 = LocalDate.of(2023, 11, 30);
+		
+		System.out.println(localDate1);
+		System.out.println(localDate2);
+		
+		LocalDateTime localDateTime1 = LocalDateTime.now();
+		LocalDateTime localDateTime2 = LocalDateTime.of(localDate2, localTime2);
+		
+		System.out.println(localDateTime1);
+		System.out.println(localDateTime2);
+		
+		// 특정 요소 가져오기
+		// 해당 인스턴스에서 get???
+		year = localDateTime1.getYear();
+		month = localDateTime1.getMonthValue();
+		dates = localDateTime1.getDayOfMonth();
+		int hour = localDateTime1.getHour();
+		int minute = localDateTime1.getMinute();
+		int second = localDateTime1.getSecond();
+		
+		// 특정 요소 연산
+		// 해당 인스턴스에서 minus???, plus???
+		
+		localDateTime2 = localDateTime2.minusYears(6).plusMonths(3).plusDays(10);
+		System.out.println(localDateTime2);
+		
+		// 특정 요소 지정
+		// 해당 인스턴스에서 with???
+		localDateTime2 = localDateTime2.withHour(21).withMinute(10).withSecond(1);
+		System.out.println(localDateTime2);
+		
+		// 날짜 및 시간 비교
+		// isAfter() : 특정 인스턴스가 매개변수로 전달 되는 날짜 인스턴스 보다 이후 인지
+		// isBefore() : 특정 인스턴스가 매개변수로 전달되는 날짜 인스턴스보다 이전 인지
+		// isEqual() : 특정 인스턴스가 매개변수로 전달되는 날짜 인스턴스와 같은지
+		
+		LocalDateTime localDateTime3 = LocalDateTime.of(localDate1, localTime2);
+		
+		System.out.println(localDateTime1.isAfter(localDateTime2));
+		System.out.println(localDateTime1.isBefore(localDateTime2));
+		System.out.println(localDateTime1.until(localDateTime2, ChronoUnit.YEARS));
+		
 	}
 
 }
