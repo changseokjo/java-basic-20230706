@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import com.jochangseok.board.common.PatternValidator;
 
 public class SignUpRequestDto {
-	
+
 	private String email;
 	private String password;
 	private String passwordCheck;
@@ -101,24 +101,18 @@ public class SignUpRequestDto {
 		if (!password.equals(passwordCheck)) {
 			return false;
 		}
-		
-		// 아이디@공급자/회사명.com[.net/.co.kr/.og.kr]
-		
+        
 		boolean emailCheck = PatternValidator.isValidEmail(email);
-		
-		if (!emailCheck) {
-			return false;
-		}
-		
-		boolean telNumberCheck = PatternValidator.isValidTelNumber(telNumber);
-		
-		if (!telNumberCheck) {
-			return false;
-		}
-		
-		
+        if (!emailCheck) {
+        	return false;
+        }
+        
+        boolean telNumberCheck = PatternValidator.isValidTelNumber(telNumber);
+        if (!telNumberCheck) {
+        	return false;
+        }
+        
 		return true;
-		
 	}
-
+	
 }

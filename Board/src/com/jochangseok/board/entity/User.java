@@ -2,10 +2,9 @@ package com.jochangseok.board.entity;
 
 import com.jochangseok.board.dto.request.SignUpRequestDto;
 
-//이메일 / 비밀번호 / 닉네임 / 휴대폰번호 / 주소 / 상세주소 / 개인정보동의 여부 / 프로필 사진
-
+//이메일 / 비밀번호 / 닉네임 / 휴대전화번호 / 주소 / 상세주소 / 개인정보동의 여부 / 프로필 사진
 public class User {
-	
+
 	private String email;
 	private String password;
 	private String nickname;
@@ -88,8 +87,7 @@ public class User {
 				address.isBlank() || !agreedPersonal) {
 			return false;
 		}
-		
 		return true;
 	}
-
+	
 }

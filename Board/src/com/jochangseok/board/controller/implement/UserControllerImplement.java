@@ -1,26 +1,36 @@
 package com.jochangseok.board.controller.implement;
 
 import com.jochangseok.board.controller.UserController;
+import com.jochangseok.board.dto.request.SignInRequestDto;
 import com.jochangseok.board.dto.request.SignUpRequestDto;
+import com.jochangseok.board.dto.response.ResponseEntity;
+import com.jochangseok.board.dto.response.SignInResponseDto;
 import com.jochangseok.board.dto.response.SignUpResponseDto;
 import com.jochangseok.board.service.UserService;
 
 public class UserControllerImplement implements UserController {
-
+	
 	private final UserService userService;
 	
 	public UserControllerImplement(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@Override
-	public SignUpResponseDto signUp(SignUpRequestDto requestDto) {
-		
+	public ResponseEntity<SignUpResponseDto> signUp(SignUpRequestDto requestDto) {
 		boolean isValid = requestDto.valid();
-		if (!isValid) return new SignUpResponseDto(false, "올바르지 않은 입력입니다.");
+		if (!isValid) return ResponseEntity.badRequest();
 		
-		SignUpResponseDto result = userService.signUp(requestDto);
+		ResponseEntity<SignUpResponseDto> result = userService.signUp(requestDto);
+		return result;
+	}
+
+	@Override
+	public ResponseEntity<SignInResponseDto> signIn(SignInRequestDto requestDto) {
+		boolean isValid = requestDto.valid();
+		if (!isValid) return ResponseEntity.badRequest();
 		
+		ResponseEntity<SignInResponseDto> result = userService.signIn(requestDto);
 		return result;
 	}
 

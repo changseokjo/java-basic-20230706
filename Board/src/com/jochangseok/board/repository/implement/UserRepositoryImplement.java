@@ -7,10 +7,8 @@ public class UserRepositoryImplement implements UserRepository {
 
 	@Override
 	public boolean create(User entity) {
-		// entity가 null 인지?
 		if (entity == null) return false;
-		// 필수 값이 모두 입력되었는지?
-		if (entity.isCreateValid()) return false;
+		if (!entity.isCreateValid()) return false;
 		
 		USERS.add(entity);
 		
@@ -67,17 +65,16 @@ public class UserRepositoryImplement implements UserRepository {
 				USERS.remove(index);
 				break;
 			}
-				
 		}
 		
 		return true;
 	}
-	
+
 	@Override
 	public boolean existsByEmail(String email) {
 		boolean result = false;
 		
-		for (User user : USERS) {
+		for (User user: USERS) {
 			if (user.getEmail().equals(email)) {
 				result = true;
 				break;
@@ -86,12 +83,12 @@ public class UserRepositoryImplement implements UserRepository {
 		
 		return result;
 	}
-	
+
 	@Override
 	public boolean existsByTelNumber(String telNumber) {
 		boolean result = false;
 		
-		for (User user : USERS) {
+		for (User user: USERS) {
 			if (user.getTelNumber().equals(telNumber)) {
 				result = true;
 				break;
@@ -105,7 +102,7 @@ public class UserRepositoryImplement implements UserRepository {
 	public boolean existsByNickname(String nickname) {
 		boolean result = false;
 		
-		for (User user : USERS) {
+		for (User user: USERS) {
 			if (user.getNickname().equals(nickname)) {
 				result = true;
 				break;
@@ -114,5 +111,5 @@ public class UserRepositoryImplement implements UserRepository {
 		
 		return result;
 	}
-	
+
 }

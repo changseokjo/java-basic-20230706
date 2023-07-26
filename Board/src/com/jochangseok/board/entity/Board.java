@@ -14,12 +14,12 @@ import com.jochangseok.board.common.BoardIndex;
 
 public class Board {
 	
-	private static int index =1;
+	private static int index = 1;
 
 	private int boardNumber;
 	private String title;
 	private String contents;
-	private String writeDateTime;
+	private String writeDatetime;
 	private String writerEmail;
 	private String writerNickname;
 	private String writerProfileImage;
@@ -32,12 +32,12 @@ public class Board {
 			List<String> imageList) {
 		
 		Date now = new Date();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy. mm. dd. hh:mm:ss");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy. MM. dd. hh:mm:ss");
 		
 		this.boardNumber = index++;
 		this.title = title;
 		this.contents = contents;
-		this.writeDateTime = simpleDateFormat.format(now);
+		this.writeDatetime = simpleDateFormat.format(now);
 		this.writerEmail = writerEmail;
 		this.writerNickname = writerNickname;
 		this.writerProfileImage = writerProfileImage;
@@ -45,8 +45,6 @@ public class Board {
 		this.imageList = imageList;
 		this.likeList = new ArrayList<Liky>();
 		this.commentList = new ArrayList<Comment>();
-		
-		
 		
 	}
 
@@ -74,6 +72,14 @@ public class Board {
 		this.writerNickname = writerNickname;
 	}
 
+	public String getWriterProfileImage() {
+		return writerProfileImage;
+	}
+
+	public void setWriterProfileImage(String writerProfileImage) {
+		this.writerProfileImage = writerProfileImage;
+	}
+
 	public int getViewCount() {
 		return viewCount;
 	}
@@ -86,16 +92,12 @@ public class Board {
 		return boardNumber;
 	}
 
-	public String getWriteDateTime() {
-		return writeDateTime;
+	public String getWriteDatetime() {
+		return writeDatetime;
 	}
 
 	public String getWriterEmail() {
 		return writerEmail;
-	}
-
-	public String getWriterProfileImage() {
-		return writerProfileImage;
 	}
 
 	public List<String> getImageList() {
@@ -109,9 +111,5 @@ public class Board {
 	public List<Comment> getCommentList() {
 		return commentList;
 	}
-	
-	
-	
-	
 	
 }
